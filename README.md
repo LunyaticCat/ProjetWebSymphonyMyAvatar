@@ -232,6 +232,3 @@ setfacl -R -m d:u:www-data:r-w-x ~/public_html
 <p>Aussi, c’est un projet assez conséquent et en équipe : cela signifie donc des outils de gestions appropriés (Trello par exemple ?) et surtout l’utilisation et la bonne organisation d’un dépôt git. N’oubliez pas que vous pouvez utiliser <a href="https://gitlabinfo.iutmontp.univ-montp2.fr">le Gitlab du département</a>.</p>
 
 <p>Quoi qu’il en soit, n’hésitez pas à poser des questions à votre enseignant chargé de TD et à montrer votre avancement ! Bon projet.</p>
-
-
-        </div>
