@@ -1621,6 +1621,6 @@ $context["voter_detail"], "vote", [], "array", false, false, false, 452) == twig
         </div>
     {% endif %}
 {% endblock %}
-", "@Security/Collector/security.html.twig", "/home/ann3/bruny/public_html/TerrariaProject/vendor/symfony/security-bundle/Resources/views/Collector/security.html.twig");
+", "@Security/Collector/security.html.twig", "/home/ann3/bruny/PhpstormProjects/ProjetWebSymphony/vendor/symfony/security-bundle/Resources/views/Collector/security.html.twig");
     }
 }

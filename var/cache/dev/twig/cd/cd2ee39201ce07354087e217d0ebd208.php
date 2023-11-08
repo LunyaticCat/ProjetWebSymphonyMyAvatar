@@ -283,6 +283,6 @@ class __TwigTemplate_cc887b671f00a7dbfffe2b14d9c98f5e extends Template
         });
     </script>
 {% endblock %}
-", "@WebProfiler/Profiler/open.html.twig", "/home/ann3/bruny/public_html/TerrariaProject/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
+", "@WebProfiler/Profiler/open.html.twig", "/home/ann3/bruny/PhpstormProjects/ProjetWebSymphony/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
     }
 }

@@ -968,6 +968,6 @@ class __TwigTemplate_bef5d3cc36174c010400fea48b5d4566 extends Template
         {% endautoescape %}</script>
     </div>
 {% endmacro %}
-", "@WebProfiler/Collector/time.html.twig", "/home/ann3/bruny/public_html/TerrariaProject/vendor/symfony/web-profiler-bundle/Resources/views/Collector/time.html.twig");
+", "@WebProfiler/Collector/time.html.twig", "/home/ann3/bruny/PhpstormProjects/ProjetWebSymphony/vendor/symfony/web-profiler-bundle/Resources/views/Collector/time.html.twig");
     }
 }
