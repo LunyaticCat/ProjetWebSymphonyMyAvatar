@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="410c4961-1638-4359-9187-f41b70b118f8" name="Changes" comment="added .env and update composer" />
+    <list default="true" id="410c4961-1638-4359-9187-f41b70b118f8" name="Changes" comment="added .idea to .gitignore">
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,6 +210,7 @@
       <workItem from="1699439406468" duration="389000" />
       <workItem from="1699441391436" duration="368000" />
       <workItem from="1699441781380" duration="14000" />
+      <workItem from="1699441836153" duration="304000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -221,7 +228,31 @@
       <option name="project" value="LOCAL" />
       <updated>1699441731215</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="did composer install">
+      <option name="closed" value="true" />
+      <created>1699441874626</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699441874626</updated>
+    </task>
+    <task id="LOCAL-00004" summary="did composer install">
+      <option name="closed" value="true" />
+      <created>1699441885223</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699441885223</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added .idea to .gitignore">
+      <option name="closed" value="true" />
+      <created>1699441927767</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699441927767</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +261,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="added .env and update composer" />
-    <option name="LAST_COMMIT_MESSAGE" value="added .env and update composer" />
+    <MESSAGE value="did composer install" />
+    <MESSAGE value="added .idea to .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="added .idea to .gitignore" />
   </component>
 </project>
