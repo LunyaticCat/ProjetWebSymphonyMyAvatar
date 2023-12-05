@@ -331,14 +331,21 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
-    <service id="App\Controller\UserMyAvatarController" class="App\Controller\UserMyAvatarController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\IndexController" class="App\Controller\IndexController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserMyAvatarController"/>
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\IndexController"/>
       </call>
     </service>
-    <service id="App\Repository\UserMyAvatarRepository" class="App\Repository\UserMyAvatarRepository" autowire="true" autoconfigure="true">
+    <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserController"/>
+      </call>
+    </service>
+    <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -2675,14 +2682,6 @@
         <argument>-100</argument>
       </call>
       <call method="addListener">
-        <argument>Symfony\Component\Messenger\Event\WorkerRunningEvent</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="messenger.listener.dispatch_pcntl_signal_listener"/>
-          <argument>onWorkerRunning</argument>
-        </argument>
-        <argument>100</argument>
-      </call>
-      <call method="addListener">
         <argument>Symfony\Component\Messenger\Event\WorkerStartedEvent</argument>
         <argument type="collection">
           <argument type="service_closure" id="messenger.listener.stop_worker_on_restart_signal_listener"/>
@@ -4622,7 +4621,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.RQjQ.Eh"/>
+      <argument type="service" id=".service_locator._inl0RG"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5777,7 +5776,7 @@
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.untracked_token_storage"/>
       <argument type="iterator">
-        <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.app_user_provider"/>
       </argument>
       <argument type="abstract">Provider Key</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -5904,7 +5903,7 @@
     </service>
     <service id="security.listener.user_provider" class="Symfony\Component\Security\Http\EventListener\UserProviderListener">
       <tag name="kernel.event_listener" event="Symfony\Component\Security\Http\Event\CheckPassportEvent" priority="1024" method="checkPassport"/>
-      <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
+      <argument type="service" id="security.user.provider.concrete.app_user_provider"/>
     </service>
     <service id="security.listener.user_provider.abstract" class="Symfony\Component\Security\Http\EventListener\UserProviderListener" abstract="true">
       <argument type="abstract">user provider</argument>
@@ -6069,8 +6068,11 @@
         <argument>Display information about your security firewall(s)</argument>
       </call>
     </service>
-    <service id="security.user.provider.concrete.users_in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider">
-      <argument type="collection"/>
+    <service id="security.user.provider.concrete.app_user_provider" class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider">
+      <argument type="service" id="doctrine"/>
+      <argument>App\Entity\User</argument>
+      <argument>login</argument>
+      <argument>null</argument>
     </service>
     <service id="security.firewall.map.config.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig">
       <argument>dev</argument>
@@ -6107,7 +6109,7 @@
       <argument>null</argument>
       <argument>true</argument>
       <argument>false</argument>
-      <argument>security.user.provider.concrete.users_in_memory</argument>
+      <argument>security.user.provider.concrete.app_user_provider</argument>
       <argument>main</argument>
       <argument>null</argument>
       <argument>null</argument>
@@ -6118,7 +6120,7 @@
     </service>
     <service id="security.listener.main.user_provider" class="Symfony\Component\Security\Http\EventListener\UserProviderListener">
       <tag name="kernel.event_listener" dispatcher="debug.security.event_dispatcher.main" event="Symfony\Component\Security\Http\Event\CheckPassportEvent" priority="2048" method="checkPassport"/>
-      <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
+      <argument type="service" id="security.user.provider.concrete.app_user_provider"/>
     </service>
     <service id="security.user_checker.chain.main" class="Symfony\Component\Security\Core\User\ChainUserChecker">
       <argument type="tagged_iterator" tag="security.user_checker.main"/>
@@ -6128,7 +6130,7 @@
       <tag name="container.hot_path"/>
       <argument type="service" id="security.untracked_token_storage"/>
       <argument type="iterator">
-        <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.app_user_provider"/>
       </argument>
       <argument>main</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -6450,11 +6452,14 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserMyAvatarController" class="App\Controller\UserMyAvatarController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserMyAvatarController" class="App\Controller\UserMyAvatarController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\UserMyAvatarController" class="App\Controller\UserMyAvatarController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserMyAvatarRepository" class="App\Repository\UserMyAvatarRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\UserMyAvatarRepository" class="App\Repository\UserMyAvatarRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\IndexController" class="App\Controller\IndexController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\IndexController" class="App\Controller\IndexController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\IndexController" class="App\Controller\IndexController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.7nzbL4K" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7099,10 +7104,10 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_listener" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.RQjQ.Eh" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator._inl0RG" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Repository\UserMyAvatarRepository" type="service_closure" id="App\Repository\UserMyAvatarRepository"/>
+        <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.KLVvNIq" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7449,9 +7454,15 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.O2p6Lk7.App\Controller\UserMyAvatarController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\UserMyAvatarController"/>
-      <argument>App\Controller\UserMyAvatarController</argument>
+    <service id=".service_locator.O2p6Lk7.App\Controller\IndexController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\IndexController"/>
+      <argument>App\Controller\IndexController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\UserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\UserController"/>
+      <argument>App\Controller\UserController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -8756,8 +8767,8 @@
     <service id="Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface" alias="security.user_password_hasher"/>
     <service id="Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface" alias="security.user_authenticator"/>
     <service id="security.firewall" alias="debug.security.firewall"/>
-    <service id="security.user_providers" alias="security.user.provider.concrete.users_in_memory"/>
-    <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.users_in_memory"/>
+    <service id="security.user_providers" alias="security.user.provider.concrete.app_user_provider"/>
+    <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.app_user_provider"/>
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker"/>
     <service id="security.firewall.context_locator" alias=".service_locator.zJyh7qS"/>

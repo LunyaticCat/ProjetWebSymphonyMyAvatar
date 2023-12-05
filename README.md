@@ -5,6 +5,8 @@
 * [Sujet tiré du site du prof](#sujet-tiré-du-site-du-prof)
 * [Installation des dépendances](#installation-des-dépendances)
 	* [Lors du clone](#lors-du-clone)
+* [Crédits](#crédits)
+	* [Style CSS](#style-css)
 
 # Sujet tiré du site du prof
 
@@ -262,3 +264,11 @@ composer install
 ATTENTION : Vu que, désormais, le `.env` est supprimé, il faut le recréer AVANT d'utiliser la commande `composer install`.
 
 Également, le fichier `.env` doit avoir une URL de BDD valide pour créer chaque nouvelle "entity".
+
+# Crédits
+
+Cette partie est dédiée aux diverses ressources que l'on utilise dans le site (exemple : images utilisées pour le style).
+
+## Style CSS
+
+* [Fond d'écran général : Univers Bleu de Felix Mittermeier sur Pexels (libre de droits)](https://www.pexels.com/fr-fr/photo/univers-bleu-956981/)

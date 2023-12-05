@@ -16,5 +16,7 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
-    'app_user_my_avatar' => [[], ['_controller' => 'App\\Controller\\UserMyAvatarController::index'], [], [['text', '/user/my/avatar']], [], [], []],
+    'app_index' => [[], ['_controller' => 'App\\Controller\\IndexController::index'], [], [['text', '/indexTruc']], [], [], []],
+    'index_get' => [[], ['_controller' => 'App\\Controller\\IndexController::routeIndex'], [], [['text', '/index']], [], [], []],
+    'app_user' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/user']], [], [], []],
 ];
