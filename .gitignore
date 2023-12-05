@@ -56,3 +56,4 @@
 /public/.htaccess
 .htaccess
 .env
+vendor/
