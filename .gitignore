@@ -55,3 +55,4 @@
 /.idea
 /public/.htaccess
 .htaccess
+.env
