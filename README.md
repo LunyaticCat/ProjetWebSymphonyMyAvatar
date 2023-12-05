@@ -258,3 +258,7 @@ composer install
 ```
 
 > Composer va notamment utiliser les dépendances listées dans le fichier `composer.json` pour télécharger tout ce qu’il faut.
+
+ATTENTION : Vu que, désormais, le `.env` est supprimé, il faut le recréer AVANT d'utiliser la commande `composer install`.
+
+Également, le fichier `.env` doit avoir une URL de BDD valide pour créer chaque nouvelle "entity".
