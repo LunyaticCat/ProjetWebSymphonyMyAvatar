@@ -53,3 +53,5 @@
 
 #etc
 /.idea
+/public/.htaccess
+.htaccess

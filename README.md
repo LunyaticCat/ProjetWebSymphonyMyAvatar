@@ -1,3 +1,13 @@
+# Projet Web Symfony
+
+# Sommaire
+
+* [Sujet tiré du site du prof](#sujet-tiré-du-site-du-prof)
+* [Installation des dépendances](#installation-des-dépendances)
+	* [Lors du clone](#lors-du-clone)
+
+# Sujet tiré du site du prof
+
 <div class="container">
             <h1>Projet <span class="subtitle">API REST, Symfony, Vue.js, Client-Serveur</span></h1>
 
@@ -232,3 +242,19 @@ setfacl -R -m d:u:www-data:r-w-x ~/public_html
 <p>Aussi, c’est un projet assez conséquent et en équipe : cela signifie donc des outils de gestions appropriés (Trello par exemple ?) et surtout l’utilisation et la bonne organisation d’un dépôt git. N’oubliez pas que vous pouvez utiliser <a href="https://gitlabinfo.iutmontp.univ-montp2.fr">le Gitlab du département</a>.</p>
 
 <p>Quoi qu’il en soit, n’hésitez pas à poser des questions à votre enseignant chargé de TD et à montrer votre avancement ! Bon projet.</p>
+
+# Installation des dépendances
+
+## Lors du clone
+
+Tiré du TD 1 de Symfony :
+
+> Comme vous pouvez le constater, il y a beaucoup de fichiers qui ont été générés. Au lieu de tous vous les présenter dans une section dédiée, nous parlerons plutôt de chaque fichier/dossier utile > individuellement quand nous aurons besoin de l’utiliser.
+
+> Quand vous uploaderez votre projet sur git, certains dossiers comme `vendor` (contenant les librairies importées) ou bien le cache du site seront ignorés. Pour installer un projet déjà existant (chez vous, sur une autre machine) il suffit d’exécuter la commande suivante à la racine du projet :
+
+```
+composer install
+```
+
+> Composer va notamment utiliser les dépendances listées dans le fichier `composer.json` pour télécharger tout ce qu’il faut.
