@@ -19,4 +19,5 @@ return [
     'app_index' => [[], ['_controller' => 'App\\Controller\\IndexController::index'], [], [['text', '/indexTruc']], [], [], []],
     'index_get' => [[], ['_controller' => 'App\\Controller\\IndexController::routeIndex'], [], [['text', '/index']], [], [], []],
     'app_user' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/user']], [], [], []],
+    'inscription' => [[], ['_controller' => 'App\\Controller\\UserController::inscription'], [], [['text', '/inscription']], [], [], []],
 ];

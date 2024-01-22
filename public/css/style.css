@@ -2,3 +2,89 @@
 	background-image: url("../img/fondGeneral.jpg");
 	color: rgb(255, 255, 255);
 }
+
+.navbar {
+	list-style-type: none;
+}
+
+.navbar li {
+	float: left;
+	margin-right: 0.5em;
+	padding: 0.25em 1em;
+	background-color: #EBF5FF;
+	border: 2px solid black;
+	border-top-left-radius: 1em 1em;
+	border-top-right-radius: 1em 1em;
+}
+
+.navbar li a {
+	text-decoration: none;
+	color: #4312AE;
+}
+
+.navbar li:hover, .navbar li:focus {
+	background-color: white;
+}
+
+.navbar li a:hover, .navbar li a:focus {
+	color: black;
+	font-weight: bold;
+}
+
+.navbar li.active {
+	background-color: lightblue;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+	font-family: Roboto, Arial, sans-serif;
+	max-width: 340px; 
+	min-height: 360px; 
+	padding: 10px 0;
+	margin: auto;
+	border-radius: 5px; 
+	border: solid 1px #ccc;
+	box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+	background: #000;
+	font-family: Arial, serif;
+	margin: 0 30px;
+}
+
+form p {
+	text-align: left;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 10px;
+}
+
+input[type=text], input[type=password] {
+	width: calc(100% - 57px);
+	height: 36px;
+	margin: 13px 0 0 -5px;
+	padding-left: 10px; 
+	border-radius: 0 5px 5px 0;
+	border: solid 1px #cbc9c9; 
+	box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+	background: #fff; 
+}
+
+input[type=password] {
+	margin-bottom: 15px;
+}
+
+button {
+	width: 100%;
+	padding: 10px 0;
+	margin: 10px auto;
+	border-radius: 5px; 
+	border: none;
+	background: #1c87c9; 
+	font-size: 14px;
+	font-weight: 600;
+	color: #fff;
+}
+
+button:hover {
+	background: #26a9e0;
+}

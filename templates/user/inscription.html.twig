@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+	<main>
+		{{ form_start(formUser, {'attr': {'class': 'center basic-form'}}) }}
+			<fieldset>
+				<legend>Inscription</legend>
+				
+				<div class="access-container">
+					<!-- Affichage du label "Login" -->
+					{{ form_label(formUser.login) }}
+					<p class="help-input-form">Entre 4 et 20 caractères</p>
+					<!-- Affichage de l'input du login -->
+					{{ form_widget(formUser.login) }}
+				</div>
+				
+				<div class="access-container">
+					<!-- Affichage du label "Mot de passe" -->
+					{{ form_label(formUser.plainPassword) }}
+					<p class="help-input-form">Entre 8 et 30 caractères, au moins une minuscule, une majuscule et un nombre</p>
+					<!-- Affichage de l'input du mot de passe -->
+					{{ form_widget(formUser.plainPassword) }}
+				</div>
+				
+				<div class="access-container">
+					<!-- Affichage du label "Adresse mail" -->
+					{{ form_label(formUser.email) }}
+					<!-- Affichage de l'input de l'adresse email -->
+					{{ form_widget(formUser.email) }}
+				</div>
+				
+				<div class="access-container">
+					<!-- Affichage du label "Photo de profil" -->
+					{{ form_label(formUser.profilePictureFile) }}
+					<!-- Affichage de l'input de la photo de profil (required : '', car non obligatoire...) -->
+					{{ form_widget(formUser.profilePictureFile, {'required' : '', 'attr' : {'accept' : 'image/png, image/jpeg'}}) }}
+				</div>
+				
+				<!-- Affichage du bouton d'envoi, contenant le texte (label) "S'inscrire" -->
+				{{ form_widget(formUser.SignIn, {'label': "S'inscrire", 'attr': {'class': 'basic-form-submit'}}) }}
+			</fieldset>
+			
+			{{ form_rest(formUser) }}
+		{{ form_end(formUser) }}
+	</main>
+{% endblock %}
