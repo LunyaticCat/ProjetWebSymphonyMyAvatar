@@ -20,4 +20,6 @@ return [
     'index_get' => [[], ['_controller' => 'App\\Controller\\IndexController::routeIndex'], [], [['text', '/index']], [], [], []],
     'app_user' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/user']], [], [], []],
     'inscription' => [[], ['_controller' => 'App\\Controller\\UserController::inscription'], [], [['text', '/inscription']], [], [], []],
+    'connexion' => [[], ['_controller' => 'App\\Controller\\UserController::connexion'], [], [['text', '/connexion']], [], [], []],
+    'deconnexion' => [[], ['_controller' => 'App\\Controller\\UserController::routeDeconnexion'], [], [['text', '/deconnexion']], [], [], []],
 ];

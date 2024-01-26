@@ -22,6 +22,14 @@
 	color: #4312AE;
 }
 
+.navbar li#btnDeconnexion {
+	border: none;
+	outline: none;
+	box-shadow: none;
+	text-decoration: none;
+	color: #4312AE;
+}
+
 .navbar li:hover, .navbar li:focus {
 	background-color: white;
 }
@@ -31,11 +39,19 @@
 	font-weight: bold;
 }
 
+.navbar li#btnDeconnexion:hover, .navbar li#btnDeconnexion:focus {
+	border: none;
+	outline: none;
+	box-shadow: none;
+	color: black;
+	font-weight: bold;
+}
+
 .navbar li.active {
 	background-color: lightblue;
 }
 
-form {
+.formulaire {
 	display: flex;
 	justify-content: center;
 	font-family: Roboto, Arial, sans-serif;
@@ -51,7 +67,7 @@ form {
 	margin: 0 30px;
 }
 
-form p {
+.formulaire p {
 	text-align: left;
 	font-style: italic;
 	font-weight: bold;
@@ -73,7 +89,7 @@ input[type=password] {
 	margin-bottom: 15px;
 }
 
-button {
+.formulaire button {
 	width: 100%;
 	padding: 10px 0;
 	margin: 10px auto;
@@ -85,6 +101,6 @@ button {
 	color: #fff;
 }
 
-button:hover {
+.formulaire button:hover {
 	background: #26a9e0;
 }

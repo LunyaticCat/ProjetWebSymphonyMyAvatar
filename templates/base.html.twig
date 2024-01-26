@@ -16,7 +16,11 @@
 			<li id="index"><a href="{{ path('index_get') }}">Index</a></li>
 			<li id="inscription"><a href="inscription">Inscription</a></li>
 			<li id="connexion"><a href="connexion">Connexion</a></li>
-			<li id="deconnexion"><a href="deconnexion">Déconnexion</a></li>
+			<li id="deconnexion">
+				<form method="post" action="{{ path('deconnexion') }}">
+					<button id="btnDeconnexion">Déconnexion</button>
+				</form>
+			</li>
 		</ul>
 		
 		<br />
