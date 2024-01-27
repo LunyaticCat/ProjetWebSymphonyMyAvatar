@@ -387,7 +387,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.CIm16Sx"/>
+      <argument type="service" id=".service_locator.3e3RBZW"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2940,7 +2940,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.CIm16Sx"/>
+      <argument type="service" id=".service_locator.3e3RBZW"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -6962,17 +6962,27 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.CIm16Sx" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.nzN9iEL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="repository" type="service_closure" id="App\Repository\UserRepository"/>
+        <argument key="umi" type="service_closure" id="App\Service\UserManager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.3e3RBZW" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\UserController::connexion" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UserController::inscription" type="service_closure" id=".service_locator.pUR4EDM"/>
+        <argument key="App\Controller\UserController::picture" type="service_closure" id=".service_locator.nzN9iEL"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\UserController:connexion" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UserController:inscription" type="service_closure" id=".service_locator.pUR4EDM"/>
+        <argument key="App\Controller\UserController:picture" type="service_closure" id=".service_locator.nzN9iEL"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
       </argument>
@@ -8929,7 +8939,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.CIm16Sx"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.3e3RBZW"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8951,7 +8961,8 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.0AsgX39" alias=".service_locator.pUR4EDM"/>
-    <service id=".service_locator.SGLlRUa" alias=".service_locator.CIm16Sx"/>
+    <service id=".service_locator.bje9wZ5" alias=".service_locator.nzN9iEL"/>
+    <service id=".service_locator.GxRKTeO" alias=".service_locator.3e3RBZW"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.GRReuIi" alias=".service_locator.CfnR51D"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
@@ -8976,6 +8987,7 @@
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
     <service id=".service_locator.5C_f778" alias=".service_locator.pUR4EDM"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
+    <service id=".service_locator.TMpnoWv" alias=".service_locator.nzN9iEL"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>

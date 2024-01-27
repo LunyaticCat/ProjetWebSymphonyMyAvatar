@@ -8,4 +8,5 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 interface UserManagerInterface
 {
 	public function processNewUser(User $user, ?string $plainPassword, ?UploadedFile $pictureProfile) : void;
+	public function getPictureProfilePath(string $pic) : string;
 }

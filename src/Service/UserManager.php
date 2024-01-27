@@ -49,4 +49,9 @@ class UserManager implements UserManagerInterface
 		$this->hashPassword($user, $plainPassword);
 		$this->savePictureProfile($user, $pictureProfile);
 	}
+	
+	public function getPictureProfilePath(string $pic) : string
+	{
+		return $this->profilePicture_Folder . "/" . $pic;
+	}
 }

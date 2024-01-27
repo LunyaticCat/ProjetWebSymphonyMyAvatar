@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use App\Service\UserManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class UserController extends AbstractController
 {
@@ -110,5 +111,23 @@ class UserController extends AbstractController
 	{
 		//Ne sera jamais appelée
 		throw new \Exception("Cette route n'est pas censée être appelée. Vérifiez security.yaml");
+	}
+	
+	#[Route('/avatar/{emailHash}', name: 'avatar_get', options: ["expose" => true], methods: ["GET"])]
+	public function picture(UserManagerInterface $umi, Request $request, EntityManagerInterface $entityManager, UserRepository $repository, string $emailHash): Response
+	{
+		$tabUsers = $repository->getAllUsers();
+		
+		$verif = true;
+		
+		for($i=0;$i<count($tabUsers);++$i)
+		{
+			if($emailHash == md5($tabUsers[$i]->getEmail()))
+			{
+				return new BinaryFileResponse($umi->getPictureProfilePath($tabUsers[$i]->getPictureUrl()));
+			}
+		}
+		
+		return new BinaryFileResponse("img/anonyme.jpg");
 	}
 }
