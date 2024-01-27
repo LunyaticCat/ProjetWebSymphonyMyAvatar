@@ -93,7 +93,7 @@ class UserController extends AbstractController
 	{
 		if($this->isGranted('ROLE_USER'))
 		{
-			return $this->redirectToRoute('feed_get_post');
+			return $this->redirectToRoute('index_get');
 		}
 		
 		$lastUsername = $authenticationUtils->getLastUsername();
