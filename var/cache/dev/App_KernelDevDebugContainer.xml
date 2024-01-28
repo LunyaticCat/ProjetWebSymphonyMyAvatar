@@ -387,7 +387,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.dfA88cl"/>
+      <argument type="service" id=".service_locator.E3dzRzA"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2940,7 +2940,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.dfA88cl"/>
+      <argument type="service" id=".service_locator.E3dzRzA"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -6970,10 +6970,11 @@
         <argument key="umi" type="service_closure" id="App\Service\UserManager"/>
       </argument>
     </service>
-    <service id=".service_locator.dfA88cl" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.E3dzRzA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\UserController::connexion" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\UserController::delete" type="service_closure" id=".service_locator.pUR4EDM"/>
         <argument key="App\Controller\UserController::inscription" type="service_closure" id=".service_locator.pUR4EDM"/>
         <argument key="App\Controller\UserController::picture" type="service_closure" id=".service_locator.nzN9iEL"/>
         <argument key="App\Controller\UserController::updateProfile" type="service_closure" id=".service_locator.pUR4EDM"/>
@@ -6982,6 +6983,7 @@
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\UserController:connexion" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\UserController:delete" type="service_closure" id=".service_locator.pUR4EDM"/>
         <argument key="App\Controller\UserController:inscription" type="service_closure" id=".service_locator.pUR4EDM"/>
         <argument key="App\Controller\UserController:picture" type="service_closure" id=".service_locator.nzN9iEL"/>
         <argument key="App\Controller\UserController:updateProfile" type="service_closure" id=".service_locator.pUR4EDM"/>
@@ -8941,7 +8943,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.dfA88cl"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.E3dzRzA"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8964,7 +8966,7 @@
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.0AsgX39" alias=".service_locator.pUR4EDM"/>
     <service id=".service_locator.bje9wZ5" alias=".service_locator.nzN9iEL"/>
-    <service id=".service_locator.tRj3krn" alias=".service_locator.dfA88cl"/>
+    <service id=".service_locator.FwoztqW" alias=".service_locator.E3dzRzA"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.GRReuIi" alias=".service_locator.CfnR51D"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>

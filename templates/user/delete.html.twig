@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suppression de compte{% endblock %}
+
+{% block body %}
+	<main>
+		{{ form_start(formUser, {'attr': {'class': 'formulaire'}}) }}
+			<fieldset>
+				<legend>Désirez-vous vraiment supprimer votre profil ?</legend>
+				
+				<!-- Affichage du bouton d'envoi, contenant le texte (label) "Modifier" -->
+				{{ form_widget(formUser.SignIn, {'label': "Supprimer", 'attr': {'class': 'basic-form-submit'}}) }}
+			</fieldset>
+			
+			{{ form_rest(formUser) }}
+		{{ form_end(formUser) }}
+	</main>
+{% endblock %}

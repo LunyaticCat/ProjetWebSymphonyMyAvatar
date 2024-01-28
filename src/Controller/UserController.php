@@ -16,6 +16,7 @@ use App\Service\UserManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserController extends AbstractController
 {
@@ -193,6 +194,68 @@ class UserController extends AbstractController
 			'user/update.html.twig',
 			[
 				'label' => $label,
+				'formUser' => $formUser,
+				'erreur' => $erreur
+			]
+		);
+	}
+	
+	#[Route('/delete', name: 'delete', methods: ['GET', 'POST'])]
+	public function delete(UserManagerInterface $umi, FlashMessageHelperInterface $fmhi, RequestStack $requestStack, Request $request, UserRepository $repository, EntityManagerInterface $entityManager) : Response
+	{
+		if(!$this->isGranted('ROLE_USER'))
+		{
+			return $this->redirectToRoute('index_get');
+		}
+		
+		$user = $this->getUser();
+
+		$formUser = $this->createForm(
+			UserType::class, $user,
+			[
+				'method' => 'POST',
+				'action' => $this->generateURL('delete')
+			]
+		);
+		
+		$formUser->remove('login');
+		$formUser->remove('email');
+		$formUser->remove('plainPassword');
+		$formUser->remove('profilePictureFile');
+		
+		// Traitement du formulaire.
+		$formUser->handleRequest($request);
+		
+		$erreur = "";
+		
+		if($formUser->isSubmitted() && $formUser->isValid())
+		{
+			$session = $request->getSession();
+			$session = new Session();
+			$session->invalidate();
+			
+			$session = $requestStack->getSession();
+			$session = new Session();
+			$session->invalidate();
+			
+			$entityManager->remove($user);
+			$entityManager->flush();
+			
+			$flashBag = $requestStack->getSession()->getFlashBag();
+			$flashBag->add("succes", "Modification bien réalisée !");
+			
+			return $this->redirectToRoute('index_get');
+		}
+		else if($formUser->isSubmitted() && !$formUser->isValid())
+		{
+			$fmhi->addFormErrorsAsFlash($formUser);
+			
+			$erreur = $requestStack->getSession()->getFlashBag()->get("erreur")[0];
+		}
+		
+		return $this->render(
+			'user/delete.html.twig',
+			[
 				'formUser' => $formUser,
 				'erreur' => $erreur
 			]
