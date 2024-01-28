@@ -1,10 +1,36 @@
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	display: flex;
+	align-items: center;
+	flex-flow: column;
+}
+
 .document {
-	background-image: url("../img/fondGeneral.jpg");
+	background-image: url(https://i.imgur.com/5hEIzKm.jpg);
+	background-size: cover;
 	color: rgb(255, 255, 255);
+}
+
+.example-wrapper {
+	display: flex;
+	align-items: center;
+	flex-flow: column;
+	margin: 1em auto;
+	font: 18px/1.5 sans-serif;
+	background-color: grey;
+	opacity: 0.9;
+	border-radius: 35px 35px 35px 35px;
 }
 
 .navbar {
 	list-style-type: none;
+	height: 32px;
+	width: fit-content;
+	border-radius: 0 0 2% 0 / 0 0 53% 0;
 }
 
 .navbar li {
