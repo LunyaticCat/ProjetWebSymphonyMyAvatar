@@ -139,4 +139,63 @@ class UserController extends AbstractController
 		
 		return new BinaryFileResponse("img/anonyme.jpg");
 	}
+	
+	#[Route('/update', name: 'update', methods: ["GET", "POST"])]
+	public function updateProfile(UserManagerInterface $umi, FlashMessageHelperInterface $fmhi, RequestStack $requestStack, Request $request, UserRepository $repository, EntityManagerInterface $entityManager): Response
+	{
+		if(!$this->isGranted('ROLE_USER'))
+		{
+			return $this->redirectToRoute('index_get');
+		}
+		
+		$user = $this->getUser();
+
+		$formUser = $this->createForm(
+			UserType::class, $user,
+			[
+				'method' => 'POST',
+				'action' => $this->generateURL('update')
+			]
+		);
+		
+		$formUser->remove('login');
+		$formUser->remove('plainPassword');
+		
+		// Traitement du formulaire.
+		$formUser->handleRequest($request);
+		
+		$erreur = "";
+		
+		if($formUser->isSubmitted() && $formUser->isValid())
+		{
+			$umi->updatePictureProfile($user, $formUser["profilePictureFile"]->getData());
+			$entityManager->persist($user);
+			$entityManager->flush();
+			
+			$flashBag = $requestStack->getSession()->getFlashBag();
+			$flashBag->add("succes", "Modification bien réalisée !");
+			
+			return $this->redirectToRoute('index_get');
+		}
+		else if($formUser->isSubmitted() && !$formUser->isValid())
+		{
+			$fmhi->addFormErrorsAsFlash($formUser);
+			
+			$erreur = $requestStack->getSession()->getFlashBag()->get("erreur")[0];
+		}
+		
+		$label = [
+			'adresseEmail' => "Adresse E-mail :",
+			'pdp' => "Photo de profil :"
+		];
+		
+		return $this->render(
+			'user/update.html.twig',
+			[
+				'label' => $label,
+				'formUser' => $formUser,
+				'erreur' => $erreur
+			]
+		);
+	}
 }

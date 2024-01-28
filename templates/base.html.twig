@@ -17,6 +17,8 @@
 			{% if is_granted('ROLE_USER') %}
 				<!-- Utilisateur connecté -->
 				
+				<li id="modifier"><a href="update">Modifier profil</a></li>
+				
 				<li id="deconnexion">
 					<form method="post" action="{{ path('deconnexion') }}">
 						<button id="btnDeconnexion">Déconnexion</button>

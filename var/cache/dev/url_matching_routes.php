@@ -21,6 +21,7 @@ return [
         '/connexion' => [[['_route' => 'connexion', '_controller' => 'App\\Controller\\UserController::connexion'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/deconnexion' => [[['_route' => 'deconnexion', '_controller' => 'App\\Controller\\UserController::routeDeconnexion'], null, ['POST' => 0], null, false, false, null]],
         '/avatar' => [[['_route' => 'avatar_get_empty', '_controller' => 'App\\Controller\\UserController::pictureDefault'], null, ['GET' => 0], null, true, false, null]],
+        '/update' => [[['_route' => 'update', '_controller' => 'App\\Controller\\UserController::updateProfile'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

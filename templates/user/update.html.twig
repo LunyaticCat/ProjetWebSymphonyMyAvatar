@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update{% endblock %}
+
+{% block body %}
+	<main>
+		{{ form_start(formUser, {'attr': {'class': 'formulaire'}}) }}
+			<fieldset>
+				<legend>Update</legend>
+				
+				<div class="access-container">
+					<!-- Affichage du label "Adresse mail" -->
+					{{ form_label(formUser.email) }}
+					<!-- Affichage de l'input de l'adresse email -->
+					{{ form_widget(formUser.email) }}
+				</div>
+				
+				<div class="access-container">
+					<!-- Affichage du label "Photo de profil" -->
+					{{ form_label(formUser.profilePictureFile) }}
+					<!-- Affichage de l'input de la photo de profil (required : '', car non obligatoire...) -->
+					{{ form_widget(formUser.profilePictureFile, {'required' : '', 'attr' : {'accept' : 'image/png, image/jpeg'}}) }}
+				</div>
+				
+				<!-- Affichage du bouton d'envoi, contenant le texte (label) "Modifier" -->
+				{{ form_widget(formUser.SignIn, {'label': "Modifier", 'attr': {'class': 'basic-form-submit'}}) }}
+			</fieldset>
+			
+			{{ form_rest(formUser) }}
+		{{ form_end(formUser) }}
+	</main>
+{% endblock %}

@@ -24,4 +24,5 @@ return [
     'deconnexion' => [[], ['_controller' => 'App\\Controller\\UserController::routeDeconnexion'], [], [['text', '/deconnexion']], [], [], []],
     'avatar_get_empty' => [[], ['_controller' => 'App\\Controller\\UserController::pictureDefault'], [], [['text', '/avatar/']], [], [], []],
     'avatar_get' => [['emailHash'], ['_controller' => 'App\\Controller\\UserController::picture'], [], [['variable', '/', '[^/]++', 'emailHash', true], ['text', '/avatar']], [], [], []],
+    'update' => [[], ['_controller' => 'App\\Controller\\UserController::updateProfile'], [], [['text', '/update']], [], [], []],
 ];

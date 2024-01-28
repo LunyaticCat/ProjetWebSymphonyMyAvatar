@@ -7,6 +7,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Service\UtilisateurManagerInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class UserManager implements UserManagerInterface
 {
@@ -57,13 +58,21 @@ class UserManager implements UserManagerInterface
 	
 	public function deletePictureProfile(string $pic) : void
 	{
+		$fs = new Filesystem();
+		
+		$picturePath = $this->getPictureProfilePath($pic);
+		
+		if($fs->exists($picturePath))
+		{
+			$fs->remove($picturePath);
+		}
 	}
 	
 	public function updatePictureProfile(User $user, ?UploadedFile $pictureProfile) : void
 	{
 		if($pictureProfile != null)
 		{
-			deletePictureProfile($user->getPictureUrl());
+			$this->deletePictureProfile($user->getPictureUrl());
 			
 			$fileName = uniqid().'.'.$pictureProfile->guessExtension();
 			
