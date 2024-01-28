@@ -10,7 +10,7 @@ main {
 }
 
 .document {
-	background-image: url(https://i.imgur.com/5hEIzKm.jpg);
+	background-image: url("../img/fondGeneral.jpg");
 	background-size: cover;
 	color: rgb(255, 255, 255);
 }
