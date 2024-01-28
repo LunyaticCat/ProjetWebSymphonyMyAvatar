@@ -54,4 +54,22 @@ class UserManager implements UserManagerInterface
 	{
 		return $this->profilePicture_Folder . "/" . $pic;
 	}
+	
+	public function deletePictureProfile(string $pic) : void
+	{
+	}
+	
+	public function updatePictureProfile(User $user, ?UploadedFile $pictureProfile) : void
+	{
+		if($pictureProfile != null)
+		{
+			deletePictureProfile($user->getPictureUrl());
+			
+			$fileName = uniqid().'.'.$pictureProfile->guessExtension();
+			
+			$pictureProfile->move($this->profilePicture_Folder, $fileName);
+			
+			$user->setPictureUrl($fileName);
+		}
+	}
 }

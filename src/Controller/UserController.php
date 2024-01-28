@@ -113,9 +113,18 @@ class UserController extends AbstractController
 		throw new \Exception("Cette route n'est pas censée être appelée. Vérifiez security.yaml");
 	}
 	
+	#[Route('/avatar/', name: 'avatar_get_empty', options: ["expose" => true], methods: ["GET"])]
+	public function pictureDefault(): Response
+	{
+		return new BinaryFileResponse("img/anonyme.jpg");
+	}
+	
 	#[Route('/avatar/{emailHash}', name: 'avatar_get', options: ["expose" => true], methods: ["GET"])]
 	public function picture(UserManagerInterface $umi, Request $request, EntityManagerInterface $entityManager, UserRepository $repository, string $emailHash): Response
 	{
+		if($emailHash === null)
+			return new BinaryFileResponse("img/anonyme.jpg");
+		
 		$tabUsers = $repository->getAllUsers();
 		
 		$verif = true;

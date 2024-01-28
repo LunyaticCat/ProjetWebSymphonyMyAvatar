@@ -22,5 +22,6 @@ return [
     'inscription' => [[], ['_controller' => 'App\\Controller\\UserController::inscription'], [], [['text', '/inscription']], [], [], []],
     'connexion' => [[], ['_controller' => 'App\\Controller\\UserController::connexion'], [], [['text', '/connexion']], [], [], []],
     'deconnexion' => [[], ['_controller' => 'App\\Controller\\UserController::routeDeconnexion'], [], [['text', '/deconnexion']], [], [], []],
+    'avatar_get_empty' => [[], ['_controller' => 'App\\Controller\\UserController::pictureDefault'], [], [['text', '/avatar/']], [], [], []],
     'avatar_get' => [['emailHash'], ['_controller' => 'App\\Controller\\UserController::picture'], [], [['variable', '/', '[^/]++', 'emailHash', true], ['text', '/avatar']], [], [], []],
 ];
