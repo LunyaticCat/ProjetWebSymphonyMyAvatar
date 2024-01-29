@@ -9,18 +9,19 @@
 {% block body %}
 	<style>
 		.example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+		.centrer { text-align: center; }
 	</style>
 
 	<div class="example-wrapper">
 		<h1>Bienvenue sur MyAvatar ! ✅</h1>
-
-
-
-		This friendly message is coming from:
-		<ul>
-			<li>Your controller at <code><a href="{{ '/home/ann3/pujadej/public_html/ProjetWebSymphonyMyAvatar/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-			<li>Your template at <code><a href="{{ '/home/ann3/pujadej/public_html/ProjetWebSymphonyMyAvatar/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-		</ul>
+		
+		<div class="centrer">
+			MyAvatar est un petit site bien sympathique, permettant de gérer les avatars des utilisateurs de votre propre service.
+			
+			<br />
+			
+			Avec ce site, vos utilisateurs peuvent s'inscrire, se connecter, modifier et supprimer leur profil. Dès lors qu'un utilisateur est inscrit sur MyAvatar, vous pouvez retrouver sa photo de profil avec la route "/avatar/{emailHashMD5}", en ayant hashé au préalable son adresse e-mail avec l'algorithme MD5. Si l'argument de la route est invalide, ou bien si aucun argument n'est donné à la route, alors une photo de profil par défaut (anonyme.jpg) sera renvoyée.
+		</div>
 	</div>
 	
 	<script src={{ asset("js/scripts.js") }}></script>
